@@ -25,10 +25,10 @@ def reset_game():
 
 
 # ----------------------------------------------------
-# 📌 ฟังก์ชัน MessageBox (Dialog)
+# 📌 ฟังก์ชัน MessageBox (Dialog) - แก้ไขรับพารามิเตอร์ให้ครบ 4 ตัว
 # ----------------------------------------------------
 @st.dialog("📊 สรุปผลการเล่นเกม")
-def show_result_dialog(ans1, ans2):
+def show_result_dialog(ans1, ans2, ans3, ans4):
     st.balloons()
     score = 0
 
@@ -50,20 +50,21 @@ def show_result_dialog(ans1, ans2):
         score += 1
     else:
         st.error(f"❌ ข้อ 2: ยังไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
-        
-    # ตรวจข้อ 3
-   if u_ans3 == "Lemon":
+
+    # ตรวจข้อ 3 (แก้ไข Indentation และแก้เป็นตัวพิมพ์เล็ก "lemon")
+    if u_ans3 == "lemon":
         st.success("✅ ข้อ 3: ถูกต้อง")
         score += 4
     else:
         st.error(f"❌ ข้อ 3: ยังไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
 
-    # ตรวจข้อ 4
-    if u_ans4 == "Mango":
+    # ตรวจข้อ 4 (แก้เป็นตัวพิมพ์เล็ก "mango")
+    if u_ans4 == "mango":
         st.success("✅ ข้อ 4: ถูกต้อง")
         score += 4
     else:
         st.error(f"❌ ข้อ 4: ยังไม่ถูกต้อง (คุณตอบ '{u_ans4}')")
+
     st.info(f"🏆 ได้คะแนนรวม: {score} คะแนน")
 
     if score == 10:
@@ -106,10 +107,10 @@ ans4 = st.text_input(
     "ข้อ 4: Grandma likes `m _ ngoes`. 🥭",
     value=st.session_state.ans4_val,
 )
+
 # อัปเดตค่าล่าสุดเข้าตัวแปร
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
-
 st.session_state.ans3_val = ans3
 st.session_state.ans4_val = ans4
 
@@ -123,11 +124,9 @@ if "start" in st.session_state and not st.session_state.get("is_ended", False):
     time.sleep(1)
     st.rerun()
 
-# 5. แสดง Dialog ผลลัพธ์
+# 5. แสดง Dialog ผลลัพธ์ (ส่งพารามิเตอร์ครบ 4 ตัว)
 if st.session_state.get("is_ended", False):
-    show_result_dialog(ans1, ans2, ans3,ans4
-)
+    show_result_dialog(ans1, ans2, ans3, ans4)
 
 st.divider()
 st.write("นายศิวกร มงคลเทพ เลขที่ 9 ม.4/2")
-
