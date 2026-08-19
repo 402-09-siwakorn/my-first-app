@@ -51,15 +51,15 @@ def show_result_dialog(ans1, ans2):
     else:
         st.error(f"❌ ข้อ 2: ยังไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
         
-
-   if u_ans1 == "Lemon":
+    # ตรวจข้อ 3
+   if u_ans3 == "Lemon":
         st.success("✅ ข้อ 1: ถูกต้อง")
         score += 1
     else:
         st.error(f"❌ ข้อ 1: ยังไม่ถูกต้อง (คุณตอบ '{u_ans1}')")
 
-    # ตรวจข้อ 2
-    if u_ans2 == "Mango":
+    # ตรวจข้อ 4
+    if u_ans4 == "Mango":
         st.success("✅ ข้อ 2: ถูกต้อง")
         score += 1
     else:
@@ -99,7 +99,7 @@ ans2 = st.text_input(
     value=st.session_state.ans2_val,
 )
 ans1 = st.text_input(
-    "ข้อ 3: I like to eat `l _ m _ ns`. 🍋",
+    "ข้อ 3: I like to eat `l _ mons`. 🍋",
     value=st.session_state.ans3_val,
 )
 ans2 = st.text_input(
